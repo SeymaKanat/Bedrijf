@@ -10,6 +10,7 @@ public class Afdeling {
     private String afdelingsNaam;
     private String afdelingsPlaats;
 
+
     public Afdeling(String afdelingsNaam, String afdelingsPlaats) {
         this.afdelingsNaam = afdelingsNaam;
         this.afdelingsPlaats = afdelingsPlaats;
@@ -20,6 +21,12 @@ public class Afdeling {
     }
     public Afdeling() {
         this(DEFAULT_AFDELINGNAAM, DEDAULT_AFDELINGSPLAATS);
+    }
+
+    // toString() methode
+    @Override //3a
+    public String toString() {
+        return "afdeling " + afdelingsNaam + " te " + afdelingsPlaats;
     }
 
     public String getAfdelingsNaam() {

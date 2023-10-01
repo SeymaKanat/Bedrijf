@@ -9,39 +9,38 @@ public class Persoon {
     private static final int DEFAULT_MAANDSALARIS = 0;
     private static final String DEFAULT_WOONPLAATS = "Onbekend";
     private static final int DEFAULT_AANTALMAAND = 12;
+    private static final String DEFAULT_NAAM = "Onbekend";
 
     public static int aantalPersonen;
-    private int personeelsNummer;
-    private String naam;
-    private String woonplaats;
-    private double maandSalaris;
+    protected final static String DEFAULTWAARDE_NAAM = "Onbekend";
+    protected final static String DEFAULTWAARDE_WOONPLAATS = "Onbekend";
+    protected int personeelsNummer;
+    protected String naam;
+    protected String woonplaats;
+    protected Afdeling afdeling;
 
-    private Afdeling afdeling; //// Hier voeg ik het afdeling attribuut toe
 
-    public Persoon(String naam, String woonplaats, double maandSalaris, Afdeling afdeling) {
+    public Persoon(String naam, String woonplaats, Afdeling afdeling) {
         this.naam = naam;
         this.woonplaats = woonplaats;
-        setMaandSalaris(maandSalaris);
         this.afdeling = afdeling;
         this.personeelsNummer = ++aantalPersonen;
-
-
     }
 
     public Persoon(String naam) {
-        this(naam, DEFAULT_WOONPLAATS, DEFAULT_MAANDSALARIS, new Afdeling());
+        this(naam, DEFAULTWAARDE_WOONPLAATS, new Afdeling());
     }
 
-     public Persoon() {
-        this("Onbekend");
+    public Persoon() {
+        this(DEFAULT_NAAM);
     }
 
     public double berekenJaarInkomen() {
-        return DEFAULT_AANTALMAAND * maandSalaris;
+        return 0;
     }
-
-    public boolean heeftRechtOpBonus() {
-        return maandSalaris >= GRENSWAARDE_BONUS;
+    @Override
+    public String toString() {
+        return naam + " woont in " + woonplaats + " en werkt op " + afdeling;
     }
 
     public int getPersoneelsNummer() {
@@ -68,23 +67,18 @@ public class Persoon {
         this.woonplaats = woonplaats;
     }
 
-    public double getMaandSalaris() {
-        return maandSalaris;
-    }
-
-    public void setMaandSalaris(double maandSalaris) {
-        if (maandSalaris < 0) {
-            System.out.println("Het maandsalaris mag niet negatief zijn. Het wordt op 0 gezet.");
-            this.maandSalaris = 0.0;
-        } else {
-            this.maandSalaris = maandSalaris;
-        }
-    }
-    public Afdeling getAfdeling() { //3c
+    public Afdeling getAfdeling() {
         return afdeling;
     }
+
     public void setAfdeling(Afdeling afdeling) {
         this.afdeling = afdeling;
     }
-
 }
+
+
+
+
+
+
+

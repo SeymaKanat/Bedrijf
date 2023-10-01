@@ -7,7 +7,7 @@ import model.Zzper;
 
 /**
  * @author Seyma Kanat <s.kanat@st.hanze.nl>
- * Purpose of the program
+ * Dagdagelijkse bezigheden in mijn bedrijf
  */
 public class BedrijfLauncher {
     public static void main(String[] args) {
@@ -27,10 +27,11 @@ public class BedrijfLauncher {
         // 7e) Klaas inhuren voor 160 uur
         assistent.huurIn(160);
 
-        System.out.println("Het aantal personen in het bedrijf is "+ Persoon.aantalPersonen);
+        System.out.printf("Het aantal personen in het bedrijf is %d\n", Persoon.getAantalPersonen());
         System.out.println(baas);
         System.out.println(medewerker);
         System.out.println(assistent);
+        System.out.println();
         System.out.printf("%s verdient %.2f per jaar\n", baas.getNaam(), baas.berekenJaarInkomen());
         System.out.printf("%s verdient %.2f per jaar\n", medewerker.getNaam(), medewerker.berekenJaarInkomen());
         System.out.printf("%s verdient %.2f per jaar\n", assistent.getNaam(), assistent.berekenJaarInkomen());

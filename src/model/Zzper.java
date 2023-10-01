@@ -2,16 +2,17 @@ package model;
 
 /**
  * @author Seyma Kanat <s.kanat@st.hanze.nl>
- * Purpose of the program
+ * Beschrijft een zelfstandige die door ons bedrijf ingehuurd wordt.
  */
 public class Zzper extends Persoon {
+    private static final int DEFAULT_UREN_GEWERKT = 0;
     private double uurtarief;
     private int urenGewerkt;
 
     public Zzper(String naam, String woonplaats, Afdeling afdeling, double uurtarief) {
         super(naam, woonplaats, afdeling);
         this.uurtarief = uurtarief;
-        this.urenGewerkt = 0;
+        this.urenGewerkt = DEFAULT_UREN_GEWERKT;
     }
     // Methode om jaarinkomen te berekenen
     public double berekenJaarInkomen() {
@@ -25,25 +26,5 @@ public class Zzper extends Persoon {
     public String toString() {
         return super.toString() + " en is een zzp-er met een uurtarief van " + uurtarief;
 
-    }
-
-
-
-
-
-    public double getUurtarief() {
-        return uurtarief;
-    }
-
-    public void setUurtarief(double uurtarief) {
-        this.uurtarief = uurtarief;
-    }
-
-    public int getUrenGewerkt() {
-        return urenGewerkt;
-    }
-
-    public void setUrenGewerkt(int urenGewerkt) {
-        this.urenGewerkt = urenGewerkt;
     }
 }

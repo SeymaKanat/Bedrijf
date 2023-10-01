@@ -2,9 +2,11 @@ package model;
 
 /**
  * @author Seyma Kanat <s.kanat@st.hanze.nl>
- * Purpose of the program
+ *  Eigenschappen van die personen die in vaste dienst zijn bij mijn bedrijf
  */
 public class Werknemer extends Persoon {
+    private static final double DEFAULT_MAAND_SALARIS = 0.0;
+    private static final int MAANDEN_PER_JAAR = 12;
     private static double GRENSWAARDE_BONUS = 4500.00;
     private double maandSalaris;
 
@@ -15,46 +17,42 @@ public class Werknemer extends Persoon {
     }
 
     public Werknemer(String naam) {
-        this(naam, DEFAULTWAARDE_WOONPLAATS, new Afdeling(),0.0);
+        super(naam);
+        setMaandsalaris(DEFAULT_MAAND_SALARIS);
     }
 
     public Werknemer() {
-        this(DEFAULTWAARDE_NAAM);
+        super();
+        setMaandsalaris(DEFAULT_MAAND_SALARIS);
     }
 
     public boolean heeftRechtOpBonus() {
         return maandSalaris >= GRENSWAARDE_BONUS;
     }
 
+    @Override
     public double berekenJaarInkomen() {
+        double jaarinkomen = MAANDEN_PER_JAAR * maandSalaris;
+
         if (heeftRechtOpBonus()) {
-            return 13 * maandSalaris;
-        } else {
-            return 12 * maandSalaris;
+            jaarinkomen += maandSalaris;
         }
 
+        return jaarinkomen;
     }
     @Override
     public String toString() {
-        String rechtOpBonus;
-        if (heeftRechtOpBonus()) {
-            rechtOpBonus = " met recht op een bonus" ;
-        } else {
-            rechtOpBonus = " zonder recht op een bonus";
-        }
-        return super.toString() + " en is een werknemer" + rechtOpBonus ;
+        return String.format("%s en is een werknemer %s recht op bonus",
+                super.toString(), heeftRechtOpBonus() ? "met" : "zonder");
     }
 
 
-    public double getMaandSalaris() {
-        return maandSalaris;
-    }
-
-
-    public void setMaandSalaris(double maandSalaris) {
+    private void setMaandsalaris(double maandSalaris) {
         if (maandSalaris < 0) {
-            System.out.println("Het maandsalaris mag niet negatief zijn. Het wordt op 0 gezet.");
-            this.maandSalaris = 0.0;
+            System.err.printf("Het maandsalaris mag niet negatief zijn! Het maandsalaris wordt op %.1f gezet.\n",
+                    DEFAULT_MAAND_SALARIS);
+            this.maandSalaris = DEFAULT_MAAND_SALARIS;
+
         } else {
             this.maandSalaris = maandSalaris;
         }

@@ -26,6 +26,8 @@ public class Werknemer extends Persoon {
         setMaandsalaris(DEFAULT_MAAND_SALARIS);
     }
 
+
+
     public boolean heeftRechtOpBonus() {
         return maandSalaris >= GRENSWAARDE_BONUS;
     }

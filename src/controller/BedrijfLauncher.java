@@ -23,19 +23,33 @@ public class BedrijfLauncher {
         // 7c) Een werknemer met de naam medewerker aanmaken
         Werknemer medewerker = new Werknemer("Caroline", "Delft", afdelingen[1], 4000.00);
         // 7d) Een zzp-er met de naam assistent aanmaken
-        Zzper assistent = new Zzper("Klaas", "Diemen", afdelingen[3], 50.00);
+        Zzper assistent = new Zzper("Klaas", "Diemen", afdelingen[3], 50.00, 00);
+        Zzper projectleider = new Zzper("Ronald", "Zaandam", afdelingen[0], 80,00);
         // 7e) Klaas inhuren voor 160 uur
         assistent.huurIn(160);
-
-        System.out.printf("Het aantal personen in het bedrijf is %d\n", Persoon.getAantalPersonen());
-        System.out.println(baas);
-        System.out.println(medewerker);
-        System.out.println(assistent);
-        System.out.println();
-        System.out.printf("%s verdient %.2f per jaar\n", baas.getNaam(), baas.berekenJaarInkomen());
-        System.out.printf("%s verdient %.2f per jaar\n", medewerker.getNaam(), medewerker.berekenJaarInkomen());
-        System.out.printf("%s verdient %.2f per jaar\n", assistent.getNaam(), assistent.berekenJaarInkomen());
+        projectleider.huurIn(320);
 
 
+
+        // Maak een array van de klasse Persoon
+        Persoon[] personen = new Persoon[4];
+        personen[0] = baas;
+        personen[1] = assistent;
+        personen[2] = medewerker;
+        personen[3] = projectleider;
+
+
+        // Roep de toonJaarInkomen-methode aan voor elk persoon in de array
+        for (Persoon persoon : personen) {
+            toonJaarInkomen(persoon);
+        }
     }
+
+    // Methode om jaarinkomen van een persoon weer te geven
+    public static void toonJaarInkomen(Persoon persoon) {
+        System.out.printf("%s verdient %.2f per jaar\n", persoon.getNaam(), persoon.berekenJaarInkomen());
+    }
+
+
 }
+

@@ -33,10 +33,7 @@ public abstract class Persoon {
         this(DEFAULT_NAAM);
     }
 
-    public double berekenJaarInkomen() {
-        return 0;
-    }
-
+    public abstract double berekenJaarInkomen();
 
 
     @Override

@@ -5,6 +5,8 @@ import model.Persoon;
 import model.Werknemer;
 import model.Zzper;
 
+import java.util.ArrayList;
+
 /**
  * @author Seyma Kanat <s.kanat@st.hanze.nl>
  * Dagdagelijkse bezigheden in mijn bedrijf
@@ -12,44 +14,54 @@ import model.Zzper;
 public class BedrijfLauncher {
     public static void main(String[] args) {
 
+
         Afdeling[] afdelingen = new Afdeling[4]; //7a
         afdelingen[0] = new Afdeling("Uitvoering", "Hilversum");
         afdelingen[1] = new Afdeling("Support", "Amsterdam");
         afdelingen[2] = new Afdeling("Management", "Almere");
         afdelingen[3] = new Afdeling("Documentatie", "Gouda");
 
-        // 7b) Een werknemer met de naam baas aanmaken
-        Werknemer baas = new Werknemer("Mark", "Den Haag", afdelingen[2], 10000);
-        // 7c) Een werknemer met de naam medewerker aanmaken
-        Werknemer medewerker = new Werknemer("Caroline", "Delft", afdelingen[1], 4000.00);
-        // 7d) Een zzp-er met de naam assistent aanmaken
-        Zzper assistent = new Zzper("Klaas", "Diemen", afdelingen[3], 50.00, 00);
-        Zzper projectleider = new Zzper("Ronald", "Zaandam", afdelingen[0], 80,00);
-        // 7e) Klaas inhuren voor 160 uur
-        assistent.huurIn(160);
-        projectleider.huurIn(320);
+        ArrayList<Persoon> mijnPersonen = new ArrayList<>();
 
+        // 6.3 Vul de ArrayList met gegeven gegevens
+        mijnPersonen.add(new Werknemer("Mark", "Den Haag", afdelingen[2], 10000));
+        mijnPersonen.add(new Werknemer("Angelique", "Rotterdam", afdelingen[2], 5000));
+        mijnPersonen.add(new Werknemer("Caroline", "Delft", afdelingen[1], 4000));
+        mijnPersonen.add(new Zzper("Klaas", "Diemen", afdelingen[3], 50.00));
+        mijnPersonen.add(new Zzper("Ronald", "Zaandam", afdelingen[0], 80.00));
+        mijnPersonen.add(new Zzper("Jannie", "Utrecht", afdelingen[0], 60.00));
+        mijnPersonen.add(new Zzper("Anne", "Zwolle", afdelingen[0], 40.00));
 
+        //6.5) Gebruik een for-loop met instanceof en typecasting om alle zzp-ers in de arraylist voor 320
+        //uur in te huren.
+
+        for (Persoon persoon : mijnPersonen) {
+            if (persoon instanceof Zzper) {
+                ((Zzper) persoon).huurIn(320);
+            }
+
+        }
+        //6.6) Gebruik een for-loop en de al bestaande methode toonJaarInkomen()
+        for (Persoon persoon : mijnPersonen) {
+            toonJaarInkomen(persoon);
+
+        }
 
         // Maak een array van de klasse Persoon
         Persoon[] personen = new Persoon[4];
-        personen[0] = baas;
-        personen[1] = assistent;
-        personen[2] = medewerker;
-        personen[3] = projectleider;
 
-
-        // Roep de toonJaarInkomen-methode aan voor elk persoon in de array
-        for (Persoon persoon : personen) {
-            toonJaarInkomen(persoon);
-        }
     }
 
-    // Methode om jaarinkomen van een persoon weer te geven
     public static void toonJaarInkomen(Persoon persoon) {
         System.out.printf("%s verdient %.2f per jaar\n", persoon.getNaam(), persoon.berekenJaarInkomen());
     }
 
 
-}
+    }
+
+
+
+
+
+
 

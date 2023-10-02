@@ -1,5 +1,7 @@
 package model;
 
+import java.util.ArrayList;
+
 /**
  * @author Seyma Kanat <s.kanat@st.hanze.nl>
  * Een persoon betrokken bij ons bedrijf
@@ -59,6 +61,7 @@ public abstract class Persoon {
     public Afdeling getAfdeling() {
         return afdeling;
     }
+
 
 }
 

@@ -9,7 +9,7 @@ public class Zzper extends Persoon {
     private double uurtarief;
     private int urenGewerkt;
 
-    public Zzper(String naam, String woonplaats, Afdeling afdeling, double uurtarief, int i) {
+    public Zzper(String naam, String woonplaats, Afdeling afdeling, double uurtarief) {
         super(naam, woonplaats, afdeling);
         this.uurtarief = uurtarief;
         this.urenGewerkt = DEFAULT_UREN_GEWERKT;

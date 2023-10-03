@@ -26,6 +26,10 @@ public class Werknemer extends Persoon {
         setMaandsalaris(DEFAULT_MAAND_SALARIS);
     }
 
+    @Override
+    public void huurIn(int uren) {
+        maandSalaris += uren * MAANDEN_PER_JAAR;
+    }
 
 
     public boolean heeftRechtOpBonus() {

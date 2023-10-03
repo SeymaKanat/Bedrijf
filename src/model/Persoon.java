@@ -1,12 +1,12 @@
 package model;
 
-import java.util.ArrayList;
-
 /**
  * @author Seyma Kanat <s.kanat@st.hanze.nl>
  * Een persoon betrokken bij ons bedrijf
  */
-public abstract class Persoon {
+public abstract class Persoon implements Comparable<Persoon>  { //7.2.a Voeg de interface Comparable toe.
+
+
 
     private static final String DEFAULT_NAAM = "Onbekend";
     private final static String DEFAULTWAARDE_WOONPLAATS = "Onbekend";
@@ -35,17 +35,23 @@ public abstract class Persoon {
         this(DEFAULT_NAAM);
     }
 
+    public abstract void huurIn(int uren) //7.5.a.Voeg de methode huurIn toe.
+    ;
+
     public abstract double berekenJaarInkomen();
 
+    @Override // 7.2.bVoeg de methode compareTo() toe,
+    public int compareTo(Persoon anderePersoon) {
+        return this.naam.compareTo(anderePersoon.naam);// benim adimi baska personel adiyla kiyasla demekmis
+
+    }
 
     @Override
     public String toString() {
         return String.format("%s woont in %s en werkt op %s", this.naam, this.woonplaats, this.afdeling);
     }
 
-    public static int getAantalPersonen() {
-        return aantalPersonen;
-    }
+
 
     public int getPersoneelsnummer() {
         return personeelsnummer;
@@ -61,6 +67,7 @@ public abstract class Persoon {
     public Afdeling getAfdeling() {
         return afdeling;
     }
+
 
 
 }

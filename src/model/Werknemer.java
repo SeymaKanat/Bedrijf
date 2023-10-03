@@ -7,14 +7,17 @@ package model;
 public class Werknemer extends Persoon {
     private static final double DEFAULT_MAAND_SALARIS = 0.0;
     private static final int MAANDEN_PER_JAAR = 12;
+    private static final int MAAND_SALARIS = 0;
     private static double GRENSWAARDE_BONUS = 4500.00;
     private double maandSalaris;
 
     //Constructors
-    public Werknemer(String naam, String woonplaats, Afdeling afdeling,double maandSalaris) {
+    public Werknemer(String naam, String woonplaats, Afdeling afdeling, double maandSalaris) {
         super(naam, woonplaats, afdeling);
-        this.maandSalaris = maandSalaris;
+        setMaandsalaris(maandSalaris);
     }
+
+
 
     public Werknemer(String naam) {
         super(naam);
@@ -46,23 +49,19 @@ public class Werknemer extends Persoon {
 
         return jaarinkomen;
     }
-    @Override
+    @Override //8.5
     public String toString() {
         return String.format("%s en is een werknemer %s recht op bonus",
                 super.toString(), heeftRechtOpBonus() ? "met" : "zonder");
     }
 
-
-    private void setMaandsalaris(double maandSalaris) {
+    private void setMaandsalaris(double maandSalaris) { //8.2
         if (maandSalaris < 0) {
-            System.err.printf("Het maandsalaris mag niet negatief zijn! Het maandsalaris wordt op %.1f gezet.\n",
-                    DEFAULT_MAAND_SALARIS);
-            this.maandSalaris = DEFAULT_MAAND_SALARIS;
-
-        } else {
+            throw new IllegalArgumentException("Het maandsalaris mag niet negatief zijn"); //8.2.a.Voeg de methode setMaandsalaris toe
+        }
             this.maandSalaris = maandSalaris;
         }
     }
-}
+
 
 
